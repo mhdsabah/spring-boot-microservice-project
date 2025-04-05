@@ -1,0 +1,9 @@
+com\sabah\microservice\product_service\model\Product$ProductBuilder.class
+com\sabah\microservice\product_service\service\ProductService.class
+com\sabah\microservice\product_service\dto\ProductRequest.class
+com\sabah\microservice\product_service\model\Product.class
+com\sabah\microservice\product_service\ProductServiceApplication.class
+com\sabah\microservice\product_service\repository\ProductRepository.class
+com\sabah\microservice\product_service\config\OpenAPIConfig.class
+com\sabah\microservice\product_service\controller\ProductController.class
+com\sabah\microservice\product_service\dto\ProductResponse.class
