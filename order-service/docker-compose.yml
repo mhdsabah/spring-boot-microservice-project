@@ -66,13 +66,13 @@ services:
       - "8086:8080"
     depends_on:
       - broker
-      # - schema-registry
+      - schema-registry
     environment:
       KAFKA_CLUSTERS_NAME: local
       # its running on its on container so using the 29092 port to connect 
       # it with other cluster
       KAFKA_CLUSTERS_BOOTSTRAPSERVERS: broker:29092
-      # KAFKA_CLUSTERS_SCHEMAREGISTRY: http://schema-registry:8081
+      KAFKA_CLUSTERS_SCHEMAREGISTRY: http://schema-registry:8081
       DYNAMIC_CONFIG_ENABLED: 'true'
 
 

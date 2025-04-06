@@ -41,14 +41,27 @@ public class OrderService {
 
             // sendign the message to kafka Topic
             //ordernumber ,email
-            OrderPlacedEvent orderPlacedEvent = new OrderPlacedEvent(order.getOrderNumber(), orderRequest.userDetails().email());
+            OrderPlacedEvent orderPlacedEvent = new OrderPlacedEvent();
+            orderPlacedEvent.setOrderNumber(order.getOrderNumber());
+            orderPlacedEvent.setEmail(orderRequest.userDetails().email());
+            orderPlacedEvent.setFirstName(orderRequest.userDetails().firstName());
+            orderPlacedEvent.setLastName(orderRequest.userDetails().lastName());
+            
             
             // //since we created the template as String, OrderPlacedEvent
             // // we need to convert the OrderPlacedEvent to String using the ObjectMapper
 
-            log.info("Start - sending OrderPlacedEvent {} to kafka topic order_placced", orderPlacedEvent);
-            kafkaTemplate.send("order-placed", orderPlacedEvent);
-            log.info("End - sending OrderPlacedEvent {} to kafka topic order_placced", orderPlacedEvent);
+            log.info("Start - sending OrderPlacedEvent {} to kafka topic order_placed", orderPlacedEvent);
+            // try
+            // {
+                kafkaTemplate.send("order-placed", orderPlacedEvent);
+            // }
+            // catch (Exception e)
+            // {
+            //     log.error("\n\n-----------\n Error sending OrderPlacedEvent {} to kafka topic order_placed", orderPlacedEvent, e);
+            // }
+            
+            log.info("End - sending OrderPlacedEvent {} to kafka topic order_placed", orderPlacedEvent);
             
 
         }

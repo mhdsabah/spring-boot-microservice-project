@@ -24,7 +24,7 @@ public class OrderController {
     @ResponseStatus(HttpStatus.CREATED)
     public String placeOrder(@RequestBody OrderRequest orderRequest){
         // orderRequest.
-        // System.out.println("\n\n\n\n" + orderRequest.skuCode()+"," + orderRequest.price() +"," + orderRequest.quantity()+"\n\n\n\n");
+        System.out.println("\n\n\n\n" +orderRequest + "\n\n\n\n");
         
         orderService.placeOrder(orderRequest);
         return "Order placed successfully";
