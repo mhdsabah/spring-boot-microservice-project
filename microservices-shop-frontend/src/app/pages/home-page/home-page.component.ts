@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import {Order} from "../../model/order";
 import {FormsModule} from "@angular/forms";
 import {OrderService} from "../../services/order.service";
+import { first, last } from 'rxjs';
 
 @Component({
   selector: 'app-homepage',
@@ -53,9 +54,13 @@ export class HomePageComponent implements OnInit {
     this.oidcSecurityService.userData$.subscribe(result => {
       const userDetails = {
         email: result.userData.email,
-        firstName: result.userData.firstName,
-        lastName: result.userData.lastName
+        // firstName: result.userData.firstName,
+        // lastName: result.userData.lastName
+        firstName: result.userData.given_name,
+        lastName: result.userData.family_name
       };
+      // console.log(result);
+      console.log(userDetails);
 
       if(!quantity) {
         this.orderFailed = true;
@@ -68,7 +73,7 @@ export class HomePageComponent implements OnInit {
           quantity: Number(quantity),
           userDetails: userDetails
         }
-        // console.log(order);
+        console.log(order);
         
         this.orderService.orderProduct(order).subscribe(() => {
           this.orderSuccess = true;
